@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sanad · Embed &amp; playground</title>
+<meta name="description" content="One-line embed code and a live config playground for the Sanad support widget.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+<style>.pg{padding:40px 0 0}.pg h1{font-size:clamp(28px,4vw,40px);margin:6px 0 10px}.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;margin-bottom:22px}.card h2{font-size:20px;margin:0 0 6px}.card p.sub{color:var(--muted);margin:0 0 16px;font-size:15px}.code{position:relative;background:#14211d;color:#d7f0e6;border-radius:14px;padding:18px;font-size:13.5px;line-height:1.7;overflow-x:auto;white-space:pre}.code .k{color:#fcd34d}.code .s{color:#86efac}.copy{position:absolute;top:10px;inset-inline-end:10px;background:#2b3b36;color:#fff;border:0;border-radius:8px;padding:6px 12px;font:600 13px IBM Plex Sans Arabic,sans-serif;cursor:pointer}.copy:hover{background:var(--brand)}.two{display:grid;grid-template-columns:1fr 1fr;gap:22px}.form{display:grid;grid-template-columns:1fr 1fr;gap:14px}.form label{display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:600}.form input,.form select{font:inherit;font-weight:400;padding:9px 11px;border:1.5px solid var(--line);border-radius:10px;background:#fff;min-width:0}.form input[type=color]{padding:3px;height:42px}.form .full{grid-column:1 / -1}.attrs{width:100%;border-collapse:collapse;font-size:14px}.attrs td{border-top:1px solid var(--line);padding:8px 6px;vertical-align:top}.attrs td:first-child{width:42%}.insp input{width:100%;font:inherit;padding:11px 13px;border:1.5px solid var(--line);border-radius:10px}.insp .out{margin-top:12px;font-size:13.5px}.tok{display:inline-block;background:#e3f1ee;color:var(--brand-2);border-radius:6px;padding:1px 8px;margin:2px}.bar{display:grid;grid-template-columns:9em 1fr 3.5em;gap:10px;align-items:center;margin:6px 0}.bar i{display:block;height:10px;border-radius:6px;background:var(--brand)}.bar.lo i{background:#cbd5d1}.verdict{font-weight:600;margin-top:8px}.row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}@media (max-width: 860px){.two,.form{grid-template-columns:1fr}}</style>
+</head>
+<body>
+<div class="demo-note">Sanad widget demo · <a href="./">See it on the demo store</a></div>
+<header class="top">
+<div class="wrap">
+<a class="logo" href="./"><b aria-hidden="true">س</b>Sanad · سند</a>
+<nav aria-label="Main"><a href="./">Demo store</a><a href="#playground">Playground</a><a href="#matcher">Matcher</a></nav>
+</div>
+</header>
+<main class="wrap pg">
+<span class="kicker">One script tag · Shadow DOM · no dependencies</span>
+<h1>Add a support chat to any website with one line</h1>
+<p class="lead">Sanad answers customers from your FAQ file with an Arabic-aware fuzzy matcher (no AI API, no server), then hands over to WhatsApp with the conversation summary when it is unsure.</p>
+<section class="card" aria-labelledby="h-embed">
+<h2 id="h-embed">Embed code</h2>
+<p class="sub">Paste before <code>&lt;/body&gt;</code>. It updates as you change the playground below.</p>
+<div class="code mono" id="code"></div>
+<div class="row"><button class="btn btn-main" id="copy" type="button">Copy embed code</button><span id="copied" role="status" style="align-self:center;color:var(--brand)"></span></div>
+</section>
+<div class="two">
+<section class="card" id="playground" aria-labelledby="h-pg">
+<h2 id="h-pg">Live config playground</h2>
+<p class="sub">Every change re-mounts the widget on this page.</p>
+<form class="form" id="cfg">
+<label>Colour <input type="color" name="color" value="#0f766e"></label>
+<label>Bot name <input name="name" value="سند" maxlength="24"></label>
+<label>WhatsApp number <input name="whatsapp" value="970000000000" inputmode="numeric" pattern="[0-9]{8,15}"></label>
+<label>Language
+<select name="lang"><option value="ar">العربية (RTL)</option><option value="en">English (LTR)</option></select></label>
+<label>Working hours <input name="hours" value="09:00-21:00" pattern="\d{2}:\d{2}-\d{2}:\d{2}"></label>
+<label>Confidence threshold <input name="threshold" type="number" min="0.2" max="0.95" step="0.05" value="0.55"></label>
+</form>
+<div class="row"><button class="btn btn-ghost" type="button" onclick="Sanad.open()">Open the widget</button></div>
+</section>
+<section class="card" aria-labelledby="h-attrs">
+<h2 id="h-attrs">Attributes</h2>
+<table class="attrs">
+<tr><td><code>data-faq</code></td><td>URL of your FAQ JSON (questions in several phrasings, answer, follow-up chips).</td></tr>
+<tr><td><code>data-whatsapp</code></td><td>Number for the “Talk to a human” hand-off, digits only.</td></tr>
+<tr><td><code>data-lang</code></td><td><code>ar</code> (RTL) or <code>en</code> (LTR).</td></tr>
+<tr><td><code>data-name</code>, <code>data-color</code></td><td>Bot name and brand colour.</td></tr>
+<tr><td><code>data-hours</code>, <code>data-days</code>, <code>data-tz</code></td><td>Working hours, e.g. <code>09:00-21:00</code>, <code>0,1,2,3,4,6</code> (Sun=0), <code>Asia/Gaza</code>.</td></tr>
+<tr><td><code>data-threshold</code></td><td>Match confidence (0–1). Below it the bot asks “Did you mean…?”.</td></tr>
+</table>
+</section>
+</div>
+<section class="card insp" id="matcher" aria-labelledby="h-m">
+<h2 id="h-m">Matcher inspector</h2>
+<p class="sub">Type a question in any dialect or with typos and see the normalised tokens and the top scores, the same code the widget runs.</p>
+<label for="q" class="sr-only" style="position:absolute;left:-9999px">Test question</label>
+<input id="q" value="قديش بتكلف الشحن لخانيونس؟" dir="auto" autocomplete="off">
+<div class="out" id="out" aria-live="polite"></div>
+</section>
+</main>
+<footer><div class="wrap">Sanad by <a href="https://abdullah-handal.github.io">Abdullah Handal</a> · vanilla JS, no dependencies</div></footer>
+<script src="sanad.js" data-faq="faq.json" data-whatsapp="970000000000" data-lang="ar"></script>
+<script src="embed.js"></script>
+</body>
+</html>
