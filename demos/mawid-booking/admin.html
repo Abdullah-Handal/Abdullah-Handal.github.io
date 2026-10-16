@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>لوحة التحكم | موعد (Demo)</title>
+<meta name="description" content="Mawid admin panel demo: bookings by day, confirm or cancel, working hours, closed days, slot length, CSV export.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0f5e57">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230f5e57'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' fill='%23f6c56f' font-family='Arial'%3EM%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="demo-bar" role="note">
+  <div class="wrap"><span class="badge" data-i18n="demoBadge">Demo / مثال تجريبي</span> <span data-i18n="demoNote">هذه نسخة تجريبية.</span></div>
+</div>
+<header class="admin-top">
+  <div class="wrap nav">
+    <a class="brand" href="index.html" data-i18n-aria="backSite" aria-label="العودة للموقع"><span class="logo" aria-hidden="true">م</span><span class="brand-text"><b data-i18n="adminTitle">لوحة التحكم</b><small data-i18n="clinic">عيادة بسمة</small></span></a>
+    <div class="nav-actions">
+      <button class="btn btn-ghost sm" id="langBtn" type="button" data-i18n-aria="langAria" aria-label="Switch to English"><span data-i18n="langSwitch">English</span></button>
+      <a class="btn btn-ghost sm" href="index.html" data-i18n="backSite">العودة للموقع</a>
+      <button class="btn btn-ghost sm" id="logout" type="button" hidden data-i18n="logout">خروج</button>
+    </div>
+  </div>
+</header>
+
+<main class="admin wrap" id="main">
+  <form class="login" id="login" novalidate>
+    <h1 class="ph" data-i18n="adminTitle">لوحة التحكم</h1>
+    <p class="hint" data-i18n="pinHint">رمز تجريبي: 1234</p>
+    <div class="field"><label for="pin" data-i18n="pinLabel">رمز الدخول</label>
+      <input id="pin" type="password" inputmode="numeric" autocomplete="off" maxlength="8" aria-describedby="pinErr" required></div>
+    <p class="err" id="pinErr" role="alert"></p>
+    <button class="btn btn-primary" type="submit" data-i18n="enter">دخول</button>
+  </form>
+
+  <div id="dash" hidden>
+    <h1 class="sr-only" data-i18n="adminTitle">لوحة التحكم</h1>
+    <div class="stats" id="stats"></div>
+    <div class="admin-grid">
+      <section class="card" aria-labelledby="bkTitle">
+        <h2 id="bkTitle" class="ph" data-i18n="bookings">الحجوزات</h2>
+        <div class="toolbar">
+          <div class="field"><label for="dayFilter" data-i18n="filterDay">تصفية حسب اليوم</label><select id="dayFilter"></select></div>
+          <label class="check"><input type="checkbox" id="showCancelled"> <span data-i18n="showCancelled">إظهار الملغاة</span></label>
+          <button class="btn btn-soft" type="button" id="csv" data-i18n="exportCsv">تصدير CSV</button>
+        </div>
+        <div id="list" aria-live="polite"></div>
+      </section>
+      <section class="card" aria-labelledby="setTitle">
+        <h2 id="setTitle" class="ph" data-i18n="settings">إعدادات الدوام</h2>
+        <form id="settings" novalidate>
+          <div class="row2">
+            <div class="field"><label for="open" data-i18n="open">بداية الدوام</label><input type="time" id="open" required step="300"></div>
+            <div class="field"><label for="close" data-i18n="close">نهاية الدوام</label><input type="time" id="close" required step="300"></div>
+          </div>
+          <div class="field"><label for="slot" data-i18n="slotLen">مدة الموعد</label>
+            <select id="slot"><option>15</option><option>20</option><option>30</option><option>45</option><option>60</option><option>90</option></select></div>
+          <fieldset class="days-check" id="closedDays"><legend data-i18n="closedDays">أيام الإغلاق الأسبوعية</legend></fieldset>
+          <p class="err" id="setErr" role="alert"></p>
+          <p class="ok-msg" id="setOk" role="status"></p>
+          <button class="btn btn-primary" type="submit" data-i18n="save">حفظ الإعدادات</button>
+        </form>
+        <hr style="border:0;border-top:1px solid var(--line);margin:20px 0">
+        <button class="btn btn-ghost sm" type="button" id="reset" data-i18n="resetDemo">إعادة البيانات التجريبية</button>
+      </section>
+    </div>
+  </div>
+</main>
+
+<script src="js/core.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>
