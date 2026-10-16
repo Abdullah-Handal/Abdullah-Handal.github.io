@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>متجر غزة للإلكترونيات · Sanad demo</title>
+<meta name="description" content="Demo store for Sanad, an embeddable Arabic-aware customer-support chat widget.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+<div class="demo-note">مثال تجريبي: متجر خيالي لعرض أداة الدعم «سند» · <a href="embed.html">كود التضمين والتجربة الحية</a></div>
+<header class="top">
+<div class="wrap">
+<a class="logo" href="./"><b aria-hidden="true">غ</b>متجر غزة للإلكترونيات</a>
+<nav aria-label="القائمة">
+<a href="#products">المنتجات</a><a href="#perks">التوصيل والضمان</a><a href="embed.html">لأصحاب المواقع</a>
+</nav>
+</div>
+</header>
+<main>
+<section class="hero">
+<div class="wrap">
+<div>
+<span class="kicker">دعم فوري على مدار الساعة</span>
+<h1>جوالات ولابتوبات أصلية، بضمان سنة وتوصيل لكل المناطق</h1>
+<p class="lead">عندك سؤال عن التوصيل أو الدفع أو الإرجاع؟ اسأل المساعد بلهجتك، ولو احتجت موظف ينقلك لواتساب مع ملخص المحادثة.</p>
+<div class="cta">
+<button class="btn btn-main" type="button" onclick="Sanad.open()">اسأل المساعد الآن</button>
+<a class="btn btn-ghost" href="#products">تصفح المنتجات</a>
+</div>
+</div>
+<div class="hero-art" aria-hidden="true">
+<svg viewBox="0 0 200 160" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+<rect x="20" y="22" width="120" height="80" rx="8" opacity=".9"/><path d="M8 112h144l-8 10H16z" opacity=".9"/>
+<rect x="128" y="50" width="52" height="94" rx="10" fill="#134e4a"/><path d="M148 134h12"/>
+<path d="M40 46h50M40 60h70M40 74h36" opacity=".55"/>
+<circle cx="166" cy="32" r="16" fill="#f59e0b" stroke="none"/><path d="M159 32l5 5 9-10" stroke="#134e4a"/>
+</svg>
+</div>
+</div>
+</section>
+<section class="wrap" id="perks" aria-label="مزايا المتجر">
+<div class="perks">
+<div class="perk"><strong>توصيل لكل المناطق</strong><span>خلال 24 ساعة داخل مدينة غزة</span></div>
+<div class="perk"><strong>ضمان سنة كاملة</strong><span>من الوكيل على الأجهزة الجديدة</span></div>
+<div class="perk"><strong>الدفع عند الاستلام</strong><span>أو تحويل بنكي ومحافظ إلكترونية</span></div>
+<div class="perk"><strong>إرجاع خلال 7 أيام</strong><span>واستبدال مجاني خلال 14 يومًا</span></div>
+</div>
+</section>
+<section class="wrap" id="products">
+<h2>الأكثر طلبًا</h2>
+<div class="grid">
+<article class="prod"><div class="ph" style="background:#dcefe9"><svg viewBox="0 0 48 48" fill="none" stroke="#0f766e" stroke-width="2.5"><rect x="14" y="4" width="20" height="40" rx="4"/><path d="M21 38h6"/></svg></div>
+<div class="in"><h3>جوال سامسونج A55</h3><span class="price">1,450 ₪</span><span class="tag">متوفر</span></div></article>
+<article class="prod"><div class="ph" style="background:#fdf0d5"><svg viewBox="0 0 48 48" fill="none" stroke="#b45309" stroke-width="2.5"><rect x="8" y="10" width="32" height="22" rx="3"/><path d="M4 36h40l-3 4H7z"/></svg></div>
+<div class="in"><h3>لابتوب لينوفو IdeaPad</h3><span class="price">2,890 ₪</span><span class="tag">متوفر</span></div></article>
+<article class="prod"><div class="ph" style="background:#e5e7f6"><svg viewBox="0 0 48 48" fill="none" stroke="#4338ca" stroke-width="2.5"><path d="M10 28v-4a14 14 0 0 1 28 0v4"/><rect x="6" y="28" width="9" height="13" rx="3"/><rect x="33" y="28" width="9" height="13" rx="3"/></svg></div>
+<div class="in"><h3>سماعات لاسلكية</h3><span class="price">220 ₪</span></div></article>
+<article class="prod"><div class="ph" style="background:#fbe4e4"><svg viewBox="0 0 48 48" fill="none" stroke="#b91c1c" stroke-width="2.5"><rect x="14" y="12" width="20" height="24" rx="6"/><path d="M18 12l2-8h8l2 8M18 36l2 8h8l2-8M24 20v5l3 2"/></svg></div>
+<div class="in"><h3>ساعة ذكية</h3><span class="price">390 ₪</span><span class="tag">متوفر</span></div></article>
+</div>
+</section>
+</main>
+<footer>
+<div class="wrap">متجر غزة للإلكترونيات (متجر خيالي لأغراض العرض) · أداة الدعم «سند» من تطوير <a href="https://abdullah-handal.github.io">Abdullah Handal</a></div>
+</footer>
+<script src="sanad.js" data-faq="faq.json" data-whatsapp="970000000000" data-lang="ar" data-name="سند" data-color="#0f766e"></script>
+</body>
+</html>
