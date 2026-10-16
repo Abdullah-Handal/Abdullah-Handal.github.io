@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>موعد | عيادة بسمة — حجز المواعيد (Demo)</title>
+<meta name="description" content="Mawid: an appointment-booking demo for a dental and beauty clinic. Arabic RTL landing page, booking flow and admin panel. Demo project.">
+<meta name="theme-color" content="#0f5e57">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230f5e57'/%3E%3Ctext x='32' y='44' font-size='34' text-anchor='middle' fill='%23f6c56f' font-family='Arial'%3EM%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip" href="#main" data-i18n="skip">تخطَّ إلى المحتوى</a>
+
+<div class="demo-bar" role="note">
+  <div class="wrap"><span class="badge" data-i18n="demoBadge">Demo / مثال تجريبي</span> <span data-i18n="demoNote">هذه نسخة تجريبية تحفظ البيانات في متصفحك فقط.</span></div>
+</div>
+
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="#top" id="top">
+      <span class="logo" aria-hidden="true">م</span>
+      <span class="brand-text"><b data-i18n="clinic">عيادة بسمة</b><small data-i18n="clinicSub">للأسنان والتجميل</small></span>
+    </a>
+    <nav class="menu" data-i18n-aria="navMain" aria-label="القائمة الرئيسية">
+      <a href="#services" data-i18n="navServices">الخدمات</a>
+      <a href="#team" data-i18n="navTeam">الفريق</a>
+      <a href="#visit" data-i18n="navVisit">الموقع والدوام</a>
+      <a href="#faq" data-i18n="navFaq">أسئلة شائعة</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="btn btn-ghost sm" id="langBtn" type="button" data-i18n-aria="langAria" aria-label="Switch to English" lang="en"><span data-i18n="langSwitch">English</span></button>
+      <a class="btn btn-primary sm" href="#book" data-i18n="bookNow">احجز موعدك</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" tabindex="-1">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="kicker" data-i18n="heroKicker">حجز إلكتروني خلال دقيقة</p>
+        <h1 data-i18n="heroTitle">ابتسامتك وبشرتك بأيدٍ أمينة</h1>
+        <p class="lead" data-i18n="heroText">اختر الخدمة واليوم والساعة المناسبة.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary lg" href="#book" data-i18n="bookNow">احجز موعدك</a>
+          <a class="btn btn-ghost lg" href="#services" data-i18n="heroSecondary">تصفّح الخدمات</a>
+        </div>
+        <ul class="trust">
+          <li data-i18n="trust1">مواعيد متاحة لـ 14 يوماً</li>
+          <li data-i18n="trust2">تأكيد عبر واتساب</li>
+          <li data-i18n="trust3">طاقم مرخّص</li>
+        </ul>
+      </div>
+      <aside class="hero-card" aria-labelledby="nextFreeLbl">
+        <p class="hc-label" id="nextFreeLbl" data-i18n="nextFree">أقرب موعد متاح</p>
+        <p class="hc-day" id="nextFreeDay">—</p>
+        <p class="hc-time" id="nextFreeTime"></p>
+        <div class="hc-slots" id="nextFreeSlots" aria-hidden="true"></div>
+        <p class="hc-hint" data-i18n="cardHint">المواعيد تتحدّث مباشرة حسب الحجوزات</p>
+      </aside>
+    </div>
+  </section>
+
+  <section id="services" class="section" aria-labelledby="servicesTitle">
+    <div class="wrap">
+      <h2 id="servicesTitle" data-i18n="servicesTitle">الخدمات والأسعار</h2>
+      <p class="section-sub" data-i18n="servicesSub">أسعار واضحة قبل الحجز.</p>
+      <ul class="services" id="servicesList"></ul>
+    </div>
+  </section>
+
+  <section id="book" class="section book" aria-labelledby="bookTitle">
+    <div class="wrap">
+      <h2 id="bookTitle" data-i18n="bookTitle">احجز موعدك</h2>
+      <p class="section-sub" data-i18n="bookSub">أربع خطوات بسيطة.</p>
+      <div class="booker">
+        <ol class="steps" id="steps" data-i18n-aria="stepsAria" aria-label="خطوات الحجز">
+          <li data-i18n="step1">الخدمة</li><li data-i18n="step2">اليوم</li><li data-i18n="step3">الوقت</li><li data-i18n="step4">بياناتك</li>
+        </ol>
+        <p class="pick" id="pickSummary" hidden></p>
+        <div class="panel" id="bookPanel"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="team" class="section" aria-labelledby="teamTitle">
+    <div class="wrap">
+      <h2 id="teamTitle" data-i18n="teamTitle">فريقنا</h2>
+      <p class="section-sub" data-i18n="teamSub">أطباء وأخصائيون بخبرة سنوات.</p>
+      <ul class="team">
+        <li><span class="avatar a1" aria-hidden="true">ل</span><h3 data-i18n="t1n">د. ليلى منصور</h3><p data-i18n="t1r">طبيبة أسنان تجميلية</p></li>
+        <li><span class="avatar a2" aria-hidden="true">ك</span><h3 data-i18n="t2n">د. كريم الحلو</h3><p data-i18n="t2r">أخصائي علاج الجذور</p></li>
+        <li><span class="avatar a3" aria-hidden="true">ه</span><h3 data-i18n="t3n">هبة ياسين</h3><p data-i18n="t3r">أخصائية عناية بالبشرة</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="visit" class="section alt" aria-labelledby="visitTitle">
+    <div class="wrap">
+      <h2 id="visitTitle" data-i18n="visitTitle">الموقع وساعات العمل</h2>
+      <div class="visit">
+        <div class="info"><h3 data-i18n="address">العنوان</h3><p data-i18n="addressVal">شارع الجامعة (عنوان تجريبي)</p></div>
+        <div class="info"><h3 data-i18n="hours">ساعات العمل</h3><p id="hoursText">—</p><p id="closedText" class="muted"></p></div>
+        <div class="info"><h3 data-i18n="contact">تواصل</h3><p><a href="https://wa.me/970000000000" rel="noopener" dir="ltr">+970 000 000 000</a></p><p class="muted" data-i18n="waNote">رقم تجريبي</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="section" aria-labelledby="faqTitle">
+    <div class="wrap narrow">
+      <h2 id="faqTitle" data-i18n="faqTitle">أسئلة شائعة</h2>
+      <div class="faq">
+        <details><summary data-i18n="q1">هل أحتاج إلى دفع مسبق؟</summary><p data-i18n="a1"></p></details>
+        <details><summary data-i18n="q2">كيف أعدّل أو ألغي موعدي؟</summary><p data-i18n="a2"></p></details>
+        <details><summary data-i18n="q3">متى يتم تأكيد الحجز؟</summary><p data-i18n="a3"></p></details>
+        <details><summary data-i18n="q4">هل الاستشارة الأولى مجانية؟</summary><p data-i18n="a4"></p></details>
+        <details><summary data-i18n="q5">هل بياناتي محفوظة؟</summary><p data-i18n="a5"></p></details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot">
+    <p><span class="badge" data-i18n="demoBadge">Demo / مثال تجريبي</span> <span data-i18n="footDemo">مشروع تجريبي.</span></p>
+    <p><a href="admin.html" data-i18n="footAdmin">لوحة التحكم (تجريبية)</a> · <span data-i18n="footBy">تصميم وتطوير</span> <a href="https://abdullah-handal.github.io" rel="noopener">Abdullah Handal</a></p>
+  </div>
+</footer>
+
+<script src="js/core.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
