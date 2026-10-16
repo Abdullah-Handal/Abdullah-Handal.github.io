@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hiwar: Arabic for beginners (demo)</title>
+<meta name="description" content="Hiwar (حوار) is a demo interactive e-book for learning Arabic: vocabulary with audio, dialogues and exercises that work on phone, tablet and computer.">
+<meta name="theme-color" content="#dbe5e0">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect x='2' y='4' width='26' height='20' rx='8' fill='%231e2a5a'/%3E%3Crect x='12' y='16' width='26' height='18' rx='8' fill='%23f2b33d'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Noto+Naskh+Arabic:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<a class="skip" href="#page">Skip to the page</a>
+<header class="topbar">
+  <a class="brand" href="#1" data-go="0" aria-label="Hiwar, back to the cover">
+    <svg viewBox="0 0 40 40" aria-hidden="true"><rect x="2" y="4" width="26" height="20" rx="8" fill="#1e2a5a"/><rect x="12" y="16" width="26" height="18" rx="8" fill="#f2b33d"/></svg>
+    <b>Hiwar</b><span class="ar name-ar" lang="ar">حوار</span>
+  </a>
+  <span class="demo-badge" title="This is a sample project, not a full course">Demo <span class="ar" lang="ar">مثال تجريبي</span></span>
+  <div class="progress">
+    <div class="progress-track" role="progressbar" aria-label="Pages read" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="progress-fill" style="width:0"></div></div>
+    <span class="progress-text" id="progress-text"></span>
+    <button type="button" class="btn-ghost" id="toc-open" aria-haspopup="dialog">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" fill="none"/></svg>
+      <span class="label">Pages</span><span class="sr-only">Open the page list</span>
+    </button>
+  </div>
+</header>
+
+<main class="book" id="book">
+  <article class="page" id="page" tabindex="-1" aria-live="off"></article>
+</main>
+
+<footer class="site-foot">
+  A demo e-book built by Abdullah Handal. More work on <a href="https://abdullah-handal.github.io">abdullah-handal.github.io</a>.
+</footer>
+
+<nav class="pager" aria-label="Page navigation">
+  <button type="button" class="btn secondary" id="prev">Previous</button>
+  <span class="hint">Use the arrow keys or swipe to turn pages</span>
+  <button type="button" class="btn" id="next">Next</button>
+</nav>
+
+<dialog class="toc" id="toc" aria-labelledby="toc-title">
+  <div class="toc-head">
+    <h2 id="toc-title">Pages</h2>
+    <button type="button" class="btn-ghost" id="toc-close">Close</button>
+  </div>
+  <div class="toc-body" id="toc-body"></div>
+</dialog>
+
+<script src="js/logic.js"></script>
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
